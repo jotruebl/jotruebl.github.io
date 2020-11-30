@@ -172,6 +172,7 @@ fig2 = make_plot(plot_type='bar', df=annual_mean_temp.reset_index(), x_vals='loc
 fig2.update_xaxes(nticks=9)
 fig2.update_yaxes(nticks=20)
 ```
+![image info](../assets/img/forest_river_flow_1/fig2.png)
 Now we can shift to precipitation.
 
 ```python
@@ -185,6 +186,7 @@ fig3.update_yaxes(type='log')
 fig3.for_each_annotation(lambda a: a.update(
     font=dict(color='black'), text=f'<b>Location {a.text[-1]}</b>'))
 ```
+![image info](../assets/img/forest_river_flow_1/fig3.png)
 
 Note the use of a lambda function. 
 
@@ -220,8 +222,6 @@ river['month'] = river.index.month
 
 fig6 = make_plot(plot_type='box', df=river, y_vals='flow', color_vals='month', 
     x_title='Month', y_title='Daily River Flow')
-
-fig6.show()
 ```
 
 Here we see that river flow is at a minimum during winter months, at its highest during spring, and elevated during winter/fall. This plot is also useful as it again shows the lack of outliers.
@@ -241,7 +241,6 @@ Next we see seasonality for precipitation. Interestingly, despite river flow bei
 t_melt['month'] = t_melt.index.month
 
 fig8 = px.box(df=t_melt, y='temp', color='month')
-fig8.show()
 ```
 So it seems that right around April/May is when the daily mean temperature rises above freezing. This means the spring flooding isn't due to necesarily to rain events, but rather is driven by melting of the snowpack.
 
