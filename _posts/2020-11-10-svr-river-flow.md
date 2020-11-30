@@ -1,27 +1,21 @@
 ---
 layout: post
-title: Predicting River Flow with Support Vector Machine Regression
+title: Predicting River Flow with Random Forest Regression Part 1 - Exploratory Data Analysis and Feature Engineering
 subtitle: A case study
 cover-img: /assets/img/path.jpg
 thumbnail-img: /assets/img/thumb.png
 share-img: /assets/img/path.jpg
-tags: [machine learning, support vector machines, regression, sklearn, python]
+tags: [machine learning, random forest, regression, sklearn, python, feature engineering, exploratory data analysis, data visualization, data cleaning, preprocessing, weather, climate]
 ---
 
 
-•	Intro
-    o   climate change is enhancing uncertainty and posing new risks to every sector of business
-    o	Climate tech is booming. As the effects of climate change become more evident, decision-makers are realizing that virtually every sector will be affected in some way. In response to this, machine learning and data science si becoming a crucial tool for addressing many of the problems.
-    o	One example is in agriculture. Name some statistics about how agriculture is extremely dependent upon good forecasts and are sensitive to change.
-    o	This post will serve as a brief tutorial on how to use machine learning to predict river flow. Specifically, we’ll be using an SVR model. Next well introduce support vector regression. Then we’ll describe the steps needed for building an SVR model, and how SKLEARN can be utilized to streamline this workflow.
-•	Support Vector Regression Basics
-    o	Optimization problem
-    o	Kernel trick
-        	Hyperparameters of kernels
-    o	Advantages
-•	Necessary steps when developing an SVR model
-    -   Imports
-    First, we need to import the following tools
+# Intro
+climate change is enhancing uncertainty and posing new risks to every sector of business
+Climate tech is booming. As the effects of climate change become more evident, decision-makers are realizing that virtually every sector will be affected in some way. In response to this, machine learning and data science si becoming a crucial tool for addressing many of the problems.
+One example is in agriculture. Name some statistics about how agriculture is extremely dependent upon good forecasts and are sensitive to change.
+
+This post will serve as a brief tutorial on how to use machine learning to predict river flow. Specifically, we’ll be using a random forest model. We'll introduce random forests/ Then we’ll describe the steps needed for building an RF model, and how SKLEARN can be utilized to streamline this workflow. Finally, we'll analyze our results and use our results to learn about the pros and cons and RFs.
+
 ```python
 import scipy
 import numpy as np
@@ -32,7 +26,6 @@ import plotly.express as px
 import plotly.graph_objs as go
 import plotly.io as pio
 from sklearn.linear_model import Ridge
-from sklearn.svm import SVR
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
 from sklearn.pipeline import Pipeline
 from sklearn.model_selection import TimeSeriesSplit, GridSearchCV
@@ -40,11 +33,10 @@ from sklearn import metrics
 from datetime import datetime
 svg_renderer = pio.renderers['svg']
 ```
+That's a lot of imports! What do they do?
 
-    That's a lot of imports! What do they do?
-
-    EDA
-    Next, let's load the data
+# Dataset Loading and Exploratory Data Analysis (EDA)
+Next, let's load the data
 
 ```python
 with open('river_dataset.pkl', 'rb') as f:
@@ -305,45 +297,186 @@ Much of the increased river flow occurs during spring (around May). Based on the
 The river decreases again into summer, but remains elevated relatvie to winter time when precipitation is falling as snow.
 
 ## Pre-processing and Feature Engineering
-
-
-
-While doing this EDA, we should also be thinking about potential features that we can engineer based on what we learn. 
+ 
 Once we've done this, we can really begin to brainstorm for features. 
-
-      	Test for correlations
 
 One way of doing this is to test for correlations. For instance, is there a correlation between rainfall and river flow after X amount of days? We can test for this simply using pandas shift feature.
 Note that this kind of correlation analysis is only a first guess, and doesn't include feature interactions. For instance, maybe the amount of rainfall is not correlated well, but when non-linearly interacting with
-temperatyre in some way, we get a stronger correlation with riverflow. By the way, this is why non-linear SVRs are so powerful. They test for this inplicitly.
+temperatyre in some way, we get a stronger correlation with riverflow. By the way, this is why non-linear machine learning methods are so powerful. They test for this inplicitly.
+
+Let's write some code to test for the correlation of daily river flow X number of days after a rain event.
 
 ```python
 # Look for correlation with time lagged precipitation
+daily_lag_corr = pd.DataFrame()
 river_rain = pd.merge(precip, river, left_index=True, right_index=True)
-
 for x in range(1,11):
     river_rain[f'flow-{x}'] = river_rain['flow'].shift(-x)
+daily_corr=river_rain.corr().loc[:'p_loc9', 'flow':].drop(columns=['month','year','ln_flow'])
+
+daily_corr
+```
+Here we see that, on average, the river flow is most correlated with rainfall on the day of or the day before measurement. But as we saw earlier, there's a seasonal trend. So what if we do this again, but group the data by month?
+
+```python
+# Look for correlation with time lagged precipitation
+mean_monthly_corr = pd.DataFrame()
+for month in range(1,13):
+    river_rain = pd.merge(precip[precip.index.month==month], river[river.index.month==month], left_index=True, right_index=True)
     
-river_rain.corr().loc[:'p_loc9', 'flow':]
+    mean_monthly_corr[month]=river_rain.corr().loc[:'p_loc9', 'flow':].drop(columns=['month','year','ln_flow']).mean()
+```
+Across all locations, on average we see that during sumer months, the rainfall causes river flow changes immediately, while in winter, the correlation is weaker. 10 days likely isnt enough to see melting snow pack. We'll come to this later. For now, let's shift to temperature.
+
+```python
+# Look for correlation with time lagged temp
+mean_monthly_corr_temp = pd.DataFrame()
+for month in range(1,13):
+    river_temp = pd.merge(temp[temp.index.month==month], river[river.index.month==month], left_index=True, right_index=True)
+    for x in range(1,11):
+        river_temp[f'flow-{x}'] = river_temp['flow'].shift(-x)
+    
+    mean_monthly_corr_temp[month]=river_temp.corr().loc[:'t_loc9', 'flow':].drop(columns=['month','year','ln_flow']).mean()
 ```
 
-Are there certain months where the correlations are stronger? For instance, if we look at a total rainfal and river flow, we may mask the impact of one specific month's rainfall-river flow interaction.
+Rising temps in april and may are more correlated with river flow. Conversely, falling temps in summer are correlated with river flow. This could be due to rainfall events, which usually coincide with passing of a cold front. Again, our 10 day lag isn't really doing much. What if we change it to 30 day lag? Or more broadly, what if we start to look for longer term trends?
+
+For example, below we will look at how precipitation during the winter correlates with the river flow for each month of the year. To do this, we'll sum up all of the precipitation occurring on our before the month of april for each year and location.
+
+```python
+winter_precip = precip[precip.index.month <= 4]
+yearly_winter_precip = winter_precip.groupby(winter_precip.index.year).sum()
+river['year']= river.index.year
+yearly_winter_precip.head()
+```
+
+Then, we'll take the mean of is across all locations. We'll also calculate the monthly mean of river flow for each year, and merge this with our yearly winter precip dataframe. 
+
+```python
+yearly_winter_precip = yearly_winter_precip.mean(axis=1)
+monthly_mean_river = river.groupby(by=['month', 'year']).mean()
+river_winter_precip = pd.merge(monthly_mean_river.reset_index(), yearly_winter_precip.reset_index(), left_on='year', right_on='date').drop(columns=['ln_flow', 'date'])
+river_winter_precip=river_winter_precip.rename(columns={0:'precip'})
+```
+
+Finally, we can test for correlations
+
+```python
+mean_monthly_corr = pd.DataFrame()
+for month in range(1,13):
+    mean_monthly_corr[month] = river_winter_precip[river_winter_precip['month']==month].corr().loc['precip']
+```
+We see that total precipitation in winter correlates most strongly with winter months (no surprise) but also fairly well with May. This indicates that precipitation falling in winter melts in spring and contributes to spring flooding. Then no longer has an impact after it has melted.
+
+We can further improve this (.03) by taking precipitation only on days when temperature was below freezing. But for now we'll keep it as-is and move on to other ideas.
+
+Next, let's think about the melting snowpack. One way of determining this is by looking at the rolling average of temperature. We can also get an idea for how quickly the snowpack melts by taking the difference in rolling temperature. We'll calculate that for week ansd month.
+
+```python
+# Create a weekly/monthly rolling average of temperature
+weekly_rolling_temp = temp.rolling(7).mean()
+monthly_rolling_temp = temp.rolling(30).mean()
+
+# Calculate daily difference in weekly/monthly rolling average of temperature..in other words: is it warming or cooling?
+weekly_temp_diff = weekly_rolling_temp.diff()
+monthly_temp_diff = monthly_rolling_temp.diff()
+
+# merge with daily river flow
+daily_river_weekly_temp_diff = pd.merge(river, weekly_temp_diff, left_index=True, right_index=True)
+daily_river_monthly_temp_diff = pd.merge(river, monthly_temp_diff, left_index=True, right_index=True)
+
+weekly_corr = pd.DataFrame()
+monthly_corr = pd.DataFrame()
+for month in range(1,13):
+    weekly_corr[month] = daily_river_weekly_temp_diff[daily_river_weekly_temp_diff['month']==month].corr().loc['flow']
+    monthly_corr[month] = daily_river_monthly_temp_diff[daily_river_monthly_temp_diff['month']==month].corr().loc['flow']
+```
+Strongest correlation for weekly change in temperature is during the month of May. We can do a similar analysis for precipitation, but instead of mean, we'll use rolling sum.
+
+```python
+# Create a weekly/monthly rolling average of precipitation 
+weekly_rolling_precip = precip.rolling(7).sum() 
+monthly_rolling_precip = precip.rolling(30).sum()
+
+daily_river_weekly_precip = pd.merge(river, weekly_rolling_precip, left_index=True, right_index=True)
+daily_river_monthly_precip = pd.merge(river, monthly_rolling_precip, left_index=True, right_index=True)
+
+weekly_corr = pd.DataFrame()
+monthly_corr = pd.DataFrame()
+for month in range(1,13):
+    weekly_corr[month] = daily_river_weekly_precip[daily_river_weekly_precip['month']==month].corr().loc['flow']
+    monthly_corr[month] = daily_river_monthly_precip[daily_river_monthly_precip['month']==month].corr().loc['flow']
+```
+Weekly correlation of rainfall is wweak during the winter months, and strongest during June-November. This supports our hypothesis during EDA that rainfall in summer months correlates well with river flow, while melting snowpack correlates better with river flow in spring.
+
+Let's summarize our findings and then move on to preparing our data for the model.
+
+* In the short term, daily river flow is most correlated with rainfall the day of and the day before, especially during late summer and autum, so months are important.
+* Daily river flow is highly correlated with rolling weekly total precip during the summer and late fall, so again, months are important.
+* Mean monthly river flow is most correlated with mean monthly rainfall during the summer and late summer periods. During the winter, mean monthly rainfall does not impact mean monthly river flow.
+* Total precipitation in winter correlates with mean river flow in winter months (no surprise) but also fairly well with monthly mean river flow in May. This indicates that precipitation falling in winter melts in spring and contributes to spring flooding. Then no longer has an impact after it has melted.
+* The above relationship is further improved if we only take precipitation that fell when temperature was below zero.
+* The change in weekly and monthly rolling mean temperature is correlated with river flow most strongly month 5 and month 9
 
 
-Here's an idea of some features:
-Le'ts create them:
-     	Create rolling windows
-  
-   
-    o	Splitting data
-        	Final evaluation set
-    o	Feature transformation
-        	Choice of scaler
-    o	Splitting data again for cross validation with a rolling time window
-        	Why a rolling time window is needed
-    o	Training and hyperparameter tuning
-        	CVgridsearch
-    o	Doing all of this with Pipeline 
-•	Training/testing the model and comparing it with other methods
+Given this, we can try the following features for predicting daily river flow: 
+1. daily rainfall 
+2. previous day's rainfall 
+3. month of year 
+4. rolling weekly sum of precipitation total 
+5. year to date sum of snowfall 
+6. daily temperature? 
+7. weekly rolling mean of temperature 
+8. difference in weekly rolling mean of temperature
 
+Below we do that:
+```python
+# temperature-related features
 
+# Create a weekly/monthly rolling average of temperature
+weekly_rolling_temp = temp.rolling(7).mean()
+monthly_rolling_temp = temp.rolling(30).mean()
+
+# Calculate daily difference in weekly/monthly rolling average of temperature..in other words: is it warming or cooling?
+weekly_temp_diff = weekly_rolling_temp.diff()
+monthly_temp_diff = monthly_rolling_temp.diff()
+
+# combine temperature data
+combined_temp_diff = pd.merge(weekly_temp_diff, monthly_temp_diff, left_index=True, right_index=True, suffixes=('_weekly_t_diff','_monthly_t_diff'))
+combined_temp_mean = pd.merge(weekly_rolling_temp, monthly_rolling_temp, left_index=True, right_index=True, suffixes=('_weekly_t_mean','_monthly_t_mean'))
+
+combined_temp_features = pd.merge(combined_temp_diff, combined_temp_mean, left_index=True, right_index=True)
+
+temp.columns= ['loc1','loc2','loc3','loc4','loc5','loc6','loc7','loc8','loc9']
+precip.columns= ['loc1','loc2','loc3','loc4','loc5','loc6','loc7','loc8','loc9']
+
+ytd_precip = precip.groupby([precip.index.year]).cumsum()
+ytd_precip.columns = [column+'_ytd_sum_precip' for column in ytd_precip.columns]
+
+# precipitation-related features
+
+# Create feature of previous day rainfall for each location
+previous_day_precip = precip.shift(1)
+
+# Create a weekly/monthly rolling average of precipitation 
+weekly_rolling_precip = precip.rolling(7).sum() 
+monthly_rolling_precip = precip.rolling(30).sum()
+
+combined_precip_features = pd.merge(monthly_rolling_precip, previous_day_precip, left_index=True, right_index=True, suffixes=('_monthly_mean_precip','_prev_day_precip'))
+
+combined_precip_features = pd.concat([combined_precip_features, ytd_precip], axis=1)
+combined_precip_features= combined_precip_features.dropna()
+
+# merge all features 
+features = pd.merge(combined_temp_features,combined_precip_features, left_index=True, right_index=True)
+
+# # include a month feature to try to capture seasonality
+features['month'] = features.index.month
+
+# Do an inner merge to keep out days that don't have data
+data_df = pd.merge(features, river, left_index=True, right_index=True)
+
+# drop nans (there shouldn't be any since we did an inner merge)
+data_df=data_df.dropna()
+data_df.head()
+```
