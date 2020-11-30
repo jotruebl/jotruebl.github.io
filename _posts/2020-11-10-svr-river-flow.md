@@ -304,6 +304,8 @@ Much of the increased river flow occurs during spring (around May). Based on the
 
 The river decreases again into summer, but remains elevated relatvie to winter time when precipitation is falling as snow.
 
+## Pre-processing and Feature Engineering
+
 
 
 While doing this EDA, we should also be thinking about potential features that we can engineer based on what we learn. 
