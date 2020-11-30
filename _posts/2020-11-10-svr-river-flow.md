@@ -204,6 +204,7 @@ fig4 = make_plot(plot_type='bar', df=annual_mean_precip.reset_index(),
 fig4.update_xaxes(nticks=9)
 fig4.update_yaxes(nticks=20)
 ```
+![image info](../assets/img/forest_river_flow_1/fig4.png)
 Here we see the mean annual (total) precipitation for each location. Each location is fairly similar, although location 8 has the most rainfall. We'll dive a bit deeper into rainfall and precipitation trends, but first let's check the distribution of our target variable, river flow.
 
 ```python
@@ -212,7 +213,7 @@ fig5 = make_plot(plot_type='histogram', df=river, x_vals='flow', x_title='River 
 fig5.update_layout(width=600, height=500, showlegend=False)
 fig5.update_yaxes(nticks=10)
 ```
-
+![image info](../assets/img/forest_river_flow_1/fig5.png)
 Finally, we have the target variable. There's lots of disagreement on whether skewed data should be transformed for a more normal distriution of target variables. It's important to realzie that for linear regression, its NOT a requirement that the target data be normal. Rather, only the residuals should be normal.
 
 Now let's look at the data a bit closer. Here beyond just looking at the structure of our data, we want to start to tease out more useful information. For instance, what if we plot the data as a function of month?
@@ -223,7 +224,7 @@ river['month'] = river.index.month
 fig6 = make_plot(plot_type='box', df=river, y_vals='flow', color_vals='month', 
     x_title='Month', y_title='Daily River Flow')
 ```
-
+![image info](../assets/img/forest_river_flow_1/fig6.png)
 Here we see that river flow is at a minimum during winter months, at its highest during spring, and elevated during winter/fall. This plot is also useful as it again shows the lack of outliers.
 
 Let's do the same for precipitation:
@@ -235,6 +236,8 @@ fig7 = px.box(df=p_melt, y='precip', color='month')
 
 fig7.update_yaxes(title='Daily Precipitation (mm)')
 ```
+![image info](../assets/img/forest_river_flow_1/fig7.png)
+
 Next we see seasonality for precipitation. Interestingly, despite river flow being at a maximum in May, precipitation is not at its highest during this time. PLotting the temeprature data will give us a clue as to what's going on.
 
 ```python
@@ -242,6 +245,8 @@ t_melt['month'] = t_melt.index.month
 
 fig8 = px.box(df=t_melt, y='temp', color='month')
 ```
+![image info](../assets/img/forest_river_flow_1/fig8.png)
+
 So it seems that right around April/May is when the daily mean temperature rises above freezing. This means the spring flooding isn't due to necesarily to rain events, but rather is driven by melting of the snowpack.
 
 We can see this all together if we plot the daily mean of temperature/precip and river flow in one plot.
@@ -323,6 +328,9 @@ fig6.layout['yaxis'] = fig3.layout['yaxis'].update({'nticks':10,
 
 fig6.update_layout(width=900, height=500,legend=dict(y = 0.95, x=0.01))
 ```
+![image info](../assets/img/forest_river_flow_1/fig9.png)
+![image info](../assets/img/forest_river_flow_1/fig10.png)
+
 Much of the increased river flow occurs during spring (around May). Based on the absence of a large increase in precipitation around that time, along with the long period of sub-zero temperatures in winter, we can assume this increase in river flow is due to yearly snowpack melt.
 
 The river decreases again into summer, but remains elevated relatvie to winter time when precipitation is falling as snow.
