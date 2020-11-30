@@ -156,6 +156,8 @@ fig1.update_layout(width=700, height=600, showlegend=False)
 fig1.for_each_annotation(lambda a: a.update(
     font=dict(color='black'), text=f'<b>Location {a.text[-1]}</b>'))
 ```
+![image info](../assets/img/forest_river_flow_1/fig1.jpg)
+
 This plot shows the histograms of temperature for each location across the entire dataset. With histograms, we're looking to get a general idea of the dataset, including the spread, skew, and presence of outliers. We also want to see if it's unimodal, bimodal, or multimodal. These kinds of things are important because they may violate the assumptions of your model.
 
 These distributions look fairly reasonable. No presence of major outliers. They appear to be multimodal, which makes sense given seasonality. We can get a bit more information if we plot the box plots.
