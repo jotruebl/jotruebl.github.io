@@ -158,7 +158,7 @@ fig1.for_each_annotation(lambda a: a.update(
 ```
 ![image info](../assets/img/forest_river_flow_1/fig1.png)
 
-This plot shows the histograms of temperature for each location across the entire dataset. With histograms, we're looking to get a general idea of the dataset, including the spread, skew, and presence of outliers. We also want to see if it's unimodal, bimodal, or multimodal. These kinds of things are important because they may violate the assumptions of your model.
+This plot shows the histograms of temperature for each location across the entire dataset. With histograms, we're looking to get a general idea of the dataset, including the spread, skew, and presence of outliers. We also want to see if it's unimodal, bimodal, or multimodal. These kinds of things are important for features and target data because they may violate the assumptions of your model. One benefit of random forests is that they don't really have much restictions on how the data should look. Specifically, this means there are no formal distributional assumptions, random forests are non-parametric and can thus handle skewed and multi-modal data as well as categorical data that are ordinal or non-ordinal.
 
 These distributions look fairly reasonable. No presence of major outliers. They appear to be multimodal, which makes sense given seasonality. We can get a bit more information if we plot the box plots.
 
@@ -214,7 +214,7 @@ fig5.update_layout(width=600, height=500, showlegend=False)
 fig5.update_yaxes(nticks=10)
 ```
 ![image info](../assets/img/forest_river_flow_1/fig5.png)
-Finally, we have the target variable. There's lots of disagreement on whether skewed data should be transformed for a more normal distriution of target variables. It's important to realzie that for linear regression, its NOT a requirement that the target data be normal. Rather, only the residuals should be normal.
+Finally, we have the target variable. There's lots of disagreement on whether skewed data should be transformed for a more normal distriution of target variables (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4120293/). It's important to realzie that for linear regression, its NOT a requirement that the target data be normal. Rather, only the residuals should be normal.
 
 Now let's look at the data a bit closer. Here beyond just looking at the structure of our data, we want to start to tease out more useful information. For instance, what if we plot the data as a function of month?
 
@@ -237,7 +237,6 @@ fig7 = px.box(df=p_melt, y='precip', color='month')
 fig7.update_yaxes(title='Daily Precipitation (mm)')
 ```
 ![image info](../assets/img/forest_river_flow_1/fig7.png)
-
 Next we see seasonality for precipitation. Interestingly, despite river flow being at a maximum in May, precipitation is not at its highest during this time. PLotting the temeprature data will give us a clue as to what's going on.
 
 ```python
