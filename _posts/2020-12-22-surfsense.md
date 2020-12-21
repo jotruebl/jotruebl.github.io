@@ -6,7 +6,7 @@ tags:
 ---
 http://stream1.cmatc.cn/pub/comet/MarineMeteorologyOceans/
 NearshoreWaveModeling/comet/oceans/nearshore_wave_models/print.htm#page_2.1.0
-In this post I will describe what I believe are the three biggest problems with the various surf forecast/report services that are currently available, and why I think machine learning is well suited to address these problems. Ultimately, it's my view that **a surf forecasting service driven by machine learning has the potential to make cheaper and more accurate forecasts, which can be provided to users in a way that better aligns with the values of surf culture.** 
+In this post I will describe what I believe are the three biggest problems with the various surf forecast/report services that are currently available, and why I think machine learning is well suited to address these problems. Ultimately, it's my view that **a surf forecasting service driven by machine learning has the potential toto provide more affordable, accurate forecasts to users in a way that better aligns with the values of surf culture.** 
 
 Without wasting any time, let's dive in and start with the first and most obvious problem. Please note that for the sake of brevity, when I say 'surf forecast' I'm talking about both 'surf forecasts' (which are made in advance) and 'surf reports' (which describe the current conditions).
 
@@ -62,7 +62,7 @@ The current business model of surf forecasting flies contrary to these three cor
 
 The whole situation is certainly a condundrum. Surfers want better forecasts, but better forecasts for them means better forecasts for everyone, which means more people in the water and thus more competition for the best waves. Perhaps even more insidious is the fact that such a service deprives new surfers the invaluable experienced gained by discovering new breaks for themselves and identifying under what conditions each break works best. This learning period is vital to building within each surfer a sense of respect for the oceans and for their fellow surfers who have gone through a similar process. When a new surfer is able to skip this learning phase and instead simply open up google and find the best surf spot in the region and drive out on a 'five-star' day, they will inevitably lack the appreciation and respect for the surf break and for the other surfers there. At its worst, such a business model can lead to a generation of surfers who view the ocean as a commodity to be exploited for their pleasure rather than a sensitive ecosystem to be protected. 
 
-For this reason, any improvements in surf forecasting should come with the added responsibility that they're provided in a way which stays true to the core values of surf culture and helps to create educated and responsible surfers.
+For this reason, any improvements in surf forecasting should come with the added responsibility of providing them in a way which stays true to the core values of surf culture and helps to create educated and responsible surfers.
 
 # Machine Learning as a Solution to Surf Forecasting's Problems
 
@@ -79,15 +79,6 @@ The final question is if this will actually lead to better forecasts. The key he
 In the coming months I'll continue building the SurfSense user interface and begin testing the underlying data-driven forecast model. Stay tuned. 
 
 ![image info](../assets/img/path.jpg)
-
-
-
-**Here is some bold text**
-
-## Here is a secondary heading
-
-
-
 
 How about a yummy crepe?
 
