@@ -12,15 +12,20 @@ Without wasting any time, let's dive in and start with the first and most obviou
 
 # Problem 1: Surf Forecasts are not Always Accurate 
 
-Let me give an example.
+Let me give an example. The following two images show day 0 forecast for a surf break in Wellington, NZ along with the actual observed conditions that day.
 
-![image info](../assets/img/forecast.jpg)
+![forecast](../assets/img/forecast.jpg)
+<figcaption>Forecast for a surf break in Wellington, NZ predicting 6-15 foot waves.</figcaption>
 
-![image info](../assets/img/reality.png)
-<figcaption>Photo from Unsplash.</figcaption>
-To understand why this forecast was so innaccurate (and to get some ideas about how we can improve it), we need to first understand how it was made. 
+![observed conditions](../assets/img/reality.png)
+<figcaption>Observed waves of about 4 feet.</figcaption>
 
-As far as I know, every single surf forecast provider's first step to making a forecast begins at the same spot: NOAA's WAVEWATCH III (WW3) model. WW3 is a pubicly available (i.e., free) global wind-wave model that predicts various conditions of the ocean such as wave height and period. It works by taking the current conditions of the sea from buoy observations and satellite measurements and 'forcing' those inputs using wind estimates from a different model by solving all the underlying physical equations. Because it solves physical equations to make predictions, WW3 is what's known as a dynamical model.
+The photo on the bottom was taken at around the time when the forecast was predicting 9-15 ft waves. Assuming the surfer is a 6 ft human being, the waves are about 4-5 foot maximum. To understand why this forecast was so innaccurate (and to get some ideas about how we can improve it), we need to first understand how it was made. 
+
+As far as I know, every surf forecast provider's first step in making a forecast begins the same: [NOAA's WAVEWATCH III (WW3) model](https://polar.ncep.noaa.gov/waves/). WW3 is a pubicly available global wind-wave model that predicts various conditions of the ocean, including signifcant wave heights and wave period. It works by taking the current conditions of the sea from buoy and satellite observations and 'forcing' those inputs using wind estimates from a different model by solving all the underlying physical equations. Because it makes predictions by taking into account the actual physics of the ocean, WW3 is what's known as a dynamical model. Below I've given an example of what the output of the WW3 model looks like.
+
+![observed conditions](../assets/img/wwoutput.png)
+<figcaption>WW3 model forecast of significant wave height and peak direction for a region of the US West Coast.</figcaption>
 
 Given that WW3 predicts things like wave height and swell direction, you may be wondering why it can't be directly used to predict how the waves will be at your local surf spot. Why pay for a premium surf forecasting service when you can simply use the freely available WW3 model? The catch here is that WW3 predicts the characteristics of waves well offshore in deep water. Such waves are quite different than the near-shore waves that surfers ride. As a deep water wave aproaches the shore, it begins to transform due to a variety of complicated interactions with the sea floor. Factors such as the shape of the coast, how steep the sea floor is, and whether the ocean bottom is sand or hard coral are all critical to determining how a deep sea wave transforms into a near-shore breaking wave. While WW3 does a great job of predicting deep water wave characteristics, the complicated, highly nonlinear interactions in the surf zone described above are still not well enough understood to provide a reliable estimate of breaking wave height. (See here for a great article on some of these factors: http://stream1.cmatc.cn/pub/comet/CoastalWeather/sww/comet/marine/SWW/print.htm)
 
