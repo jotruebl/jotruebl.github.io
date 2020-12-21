@@ -1,5 +1,5 @@
 # main links
-foo:
+main:
   - title: "Quick-Start NON"
     url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
   - title: "About"
