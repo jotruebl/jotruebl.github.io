@@ -48,7 +48,7 @@ body {
 	font-weight: 300;
 	background-color: $dark;
 	color: $white;
-	font-size: 14px;
+	font-size: 16px;
 	height: 100%;
 	width: 100%
 }
@@ -568,7 +568,7 @@ ul {
 			padding-bottom: 10px;
 
 			@media (min-width: $screen-sm-min) {
-				font-size: 24px;
+				font-size: 20px;
 				padding-left: 30px;
 				padding-right: 30px;
 				padding-top: 40px;
