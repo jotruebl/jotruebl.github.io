@@ -17,8 +17,10 @@ Let me give an example. The following two images show day 0 forecast for a surf 
 ![forecast](../assets/img/forecast.jpg)
 <figcaption>Forecast for a surf break in Wellington, NZ predicting 6-15 foot waves.</figcaption>
 
+
 ![observed conditions](../assets/img/reality.png)
 <figcaption>Observed waves of about 4 feet.</figcaption>
+
 
 The photo on the bottom was taken at around the time when the forecast was predicting 9-15 ft waves. Assuming the surfer is a 6 ft human being, the waves are about 4-5 foot maximum. To understand why this forecast was so innaccurate (and to get some ideas about how we can improve it), we need to first understand how it was made. 
 
