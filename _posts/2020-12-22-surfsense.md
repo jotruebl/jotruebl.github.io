@@ -1,13 +1,8 @@
 ---
 title: How Machine Learning Can Improve Surf Forecasts
-date: 2020-12-22
-author: Jonathan Trueblood
-summary: 
-categories:
-thumbnail: 
 tags: 
 - test
-comments: true
+
 ---
 http://stream1.cmatc.cn/pub/comet/MarineMeteorologyOceans/
 NearshoreWaveModeling/comet/oceans/nearshore_wave_models/print.htm#page_2.1.0
