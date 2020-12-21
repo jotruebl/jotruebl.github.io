@@ -14,10 +14,13 @@ Without wasting any time, let's dive in and start with the first and most obviou
 
 Let me give an example.
 
+![image info](../assets/img/forecast.jpg)
+
+![image info](../assets/img/reality.jpg)
+
 To understand why this forecast was so innaccurate (and to get some ideas about how we can improve it), we need to first understand how it was made. 
 
-As far as I know, every single surf forecast provider's first step to making a forecast begins at the same spot: NOAA's WAVEWATCH III (WW3) model. WW3 is a pubicly available (i.e., free)
-global wind-wave model that predicts various conditions of the ocean such as wave height and period. It works by taking the current conditions of the sea from buoy observations and satellite measurements and 'forcing' those inputs using wind estimates from a different model by solving all the underlying physical equations. Because it solves physical equations to make predictions, WW3 is what's known as a dynamical model.
+As far as I know, every single surf forecast provider's first step to making a forecast begins at the same spot: NOAA's WAVEWATCH III (WW3) model. WW3 is a pubicly available (i.e., free) global wind-wave model that predicts various conditions of the ocean such as wave height and period. It works by taking the current conditions of the sea from buoy observations and satellite measurements and 'forcing' those inputs using wind estimates from a different model by solving all the underlying physical equations. Because it solves physical equations to make predictions, WW3 is what's known as a dynamical model.
 
 Given that WW3 predicts things like wave height and swell direction, you may be wondering why it can't be directly used to predict how the waves will be at your local surf spot. Why pay for a premium surf forecasting service when you can simply use the freely available WW3 model? The catch here is that WW3 predicts the characteristics of waves well offshore in deep water. Such waves are quite different than the near-shore waves that surfers ride. As a deep water wave aproaches the shore, it begins to transform due to a variety of complicated interactions with the sea floor. Factors such as the shape of the coast, how steep the sea floor is, and whether the ocean bottom is sand or hard coral are all critical to determining how a deep sea wave transforms into a near-shore breaking wave. While WW3 does a great job of predicting deep water wave characteristics, the complicated, highly nonlinear interactions in the surf zone described above are still not well enough understood to provide a reliable estimate of breaking wave height. (See here for a great article on some of these factors: http://stream1.cmatc.cn/pub/comet/CoastalWeather/sww/comet/marine/SWW/print.htm)
 
@@ -78,14 +81,7 @@ The final question is if this will actually lead to better forecasts. The key he
 
 In the coming months I'll continue building the SurfSense user interface and begin testing the underlying data-driven forecast model. Stay tuned. 
 
-![image info](../assets/img/path.jpg)
 
-How about a yummy crepe?
-
-![Crepe](https://s3-media3.fl.yelpcdn.com/bphoto/cQ1Yoa75m2yUFFbY2xwuqw/348s.jpg)
-
-It can also be centered!
-
-![Crepe](https://s3-media3.fl.yelpcdn.com/bphoto/cQ1Yoa75m2yUFFbY2xwuqw/348s.jpg){: .mx-auto.d-block :}
+{: .mx-auto.d-block :}
 
 
