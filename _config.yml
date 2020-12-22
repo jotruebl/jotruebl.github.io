@@ -115,7 +115,7 @@ author:
       icon: "fab fa-fw fa-github"
       url:  "https://github.com/jotruebl"
     - label: "Google Scholar"
-      icon: "fa-graduation-cap"
+      icon: "fa fa-graduation-cap"
       url: "https://scholar.google.com/citations?user=1J7xaCEAAAAJ&hl=en"
 
 # Site Footer
