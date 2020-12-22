@@ -1,13 +1,16 @@
 ---
 title: How Machine Learning Can Improve Surf Forecasts
 tags: 
-- test
+- SurfSense
+- Machine Learning
+- Surf Forecasting
+- Surfing
+- Modeling
 ---
-http://stream1.cmatc.cn/pub/comet/MarineMeteorologyOceans/
-NearshoreWaveModeling/comet/oceans/nearshore_wave_models/print.htm#page_2.1.0
-In this post I will describe what I believe are the three biggest problems with the various surf forecast/report services that are currently available, and why I think machine learning is well suited to address these problems. Ultimately, it's my view that **a surf forecasting service driven by machine learning has the potential toto provide more affordable, accurate forecasts to users in a way that better aligns with the values of surf culture.** 
 
-Without wasting any time, let's dive in and start with the first and most obvious problem. Please note that for the sake of brevity, when I say 'surf forecast' I'm talking about both 'surf forecasts' (which are made in advance) and 'surf reports' (which describe the current conditions).
+I'd like to share with you what I believe are the three biggest problems with the various surf forecast/report services that are currently available, and why I think machine learning is well suited to address these problems. Ultimately, it's my view that **a surf forecasting service driven by machine learning has the potential toto provide more affordable, accurate forecasts to users in a way that better aligns with the values of surf culture.** 
+
+Without wasting any time, let's dive in and start with the first and most obvious problem. Please note that for the sake of brevity, when I say 'surf forecast' I'm talking about both 'surf forecasts', which are made in advance, and 'surf reports', which describe the current conditions.
 
 # Problem 1: Surf Forecasts are not Always Accurate 
 
@@ -28,14 +31,12 @@ As far as I know, every surf forecast provider's first step in making a forecast
 ![observed conditions](../assets/img/wwoutput.png)
 <figcaption>WW3 model forecast of significant wave height and peak direction for a region of the US West Coast.</figcaption>
 
-Given that WW3 predicts things like wave height and swell direction, you may be wondering why it can't be directly used to predict how the waves will be at your local surf spot. Why pay for a premium surf forecasting service when you can simply use the freely available WW3 model? The catch here is that WW3 predicts the characteristics of waves well offshore in deep water. Such waves are quite different than the near-shore waves that surfers ride. As a deep water wave aproaches the shore, it begins to transform due to a variety of complicated interactions with the sea floor. Factors such as the shape of the coast, how steep the sea floor is, and whether the ocean bottom is sand or hard coral are just a few of the critical factors that determine how a deep sea wave transforms into a near-shore breaking wave. While WW3 does a great job of predicting deep water wave characteristics, the complicated, highly nonlinear interactions in the surf zone described above are still not well enough understood to provide a reliable estimate of breaking wave height. (See [here](http://stream1.cmatc.cn/pub/comet/CoastalWeather/sww/comet/marine/SWW/print.htm) for a great article on some of these factors.)
+Given that WW3 predicts things like wave height and swell direction, you may be wondering why it can't be directly used to predict how the waves will be at your local surf spot. Why pay for a premium surf forecasting service when you can simply use the freely available WW3 model? The catch here is that WW3 predicts the characteristics of waves well offshore in deep water. Such waves are quite different than the near-shore waves that surfers ride. As a deep water wave aproaches the shore, it begins to transform due to a variety of complicated interactions with the sea floor. Factors such as the shape of the coast, how steep the sea floor is, and whether the ocean bottom is sand or hard coral are just a few of the critical factors that determine how a deep sea wave transforms into a near-shore breaking wave. While WW3 does a great job of predicting deep water wave characteristics, [the complicated, highly nonlinear interactions in the surf zone] (http://stream1.cmatc.cn/pub/comet/CoastalWeather/sww/comet/marine/SWW/print.htm)described above are still not well enough understood to provide a reliable operational estimate of breaking wave height. 
 
-All of this boils down to one point: surf forecast services need a way of transforming WAVEWATCH III's deep water wave predictions into estimates of near-shore breaking waves that matter to surfers. Each service has their own method and since theyre all proprietary, I can't give specifics. There's plenty of scholarly articles out there that can give you an idea of what the common approaches probably look like (if you're interested, [here's a good starting point.)](http://www.coastalwiki.org/wiki/Shallow-water_wave_theory). From my research, I get the impression that slope, tide, angle of beach, bathymmetry, etc. are all boiled down to likely a few simple equations, or possibly even one. In a way, [forecasting breaking wave heights from deep water waves seems to be more of an art than a science](https://magicseaweed.com/news/in-deep-water-swell-models-deconstructed/7507/), as knowledge of specific breaks is crucial to forming predictions.
+All of this boils down to one point: surf forecast services need a way of transforming WAVEWATCH III's deep-water wave predictions into estimates of breaking waves near the shore that matter to surfers. Each service has their own method, and I can't give specifics since theyre all proprietary. [There's plenty of resources out there](http://www.coastalwiki.org/wiki/Shallow-water_wave_theory) that can give you an idea of what the common approaches probably look like. From my research, I get the impression that slope, tide, angle of beach, bathymmetry, etc. are all boiled down to likely a few simple equations, or possibly even one. In a way, [forecasting breaking wave heights from deep water waves is more of an art than an exact science](https://magicseaweed.com/news/in-deep-water-swell-models-deconstructed/7507/), as knowledge of specific breaks is crucial to forming predictions.
 
 ![beach_1](../assets/img/beach_1.png)
 <figcaption>The transformation of a deep-water wave to a breaking wave in the surf zone and the various methods use to forecast each stage.</figcaption>
-
-Image showing transformation from WW3 deep water waves to surf zone waves.
 
 Depending on the amount of near-shore data available and knowledge of the break by the forecaster, you're left with forecasts that vary in their degrees of accuracy. To go back to the example above in Lyall Bay, this forecast provider is US based, and as such probably doesn't put a lot of effort into New Zealand surf forecasts. It's likely that the forecaster simply chose to use to deep-water predictions from WW3 without any further corrections due to near-shore effects, which is why the forecast is so innacurate. It's an extreme but instructive example.
 
@@ -47,12 +48,12 @@ This leads us to problem two...
 
 # Problem #2: Making Accurate Surf Forecasts is Expensive (both computationally and financially)
 
-There are three obvious routes to improving surf forecasts:
-1) make a better model
-2) forget the models and simply put cameras everywhere
-3) employ experts who can use model output to make detailed forecasts 
+There are three obvious routes to improving surf forecasts:  
+1. make a better model
+2. forget the models and simply put cameras everywhere
+3. employ experts who can use model output to make detailed forecasts 
 
-Regarding option 1: It's not that we don't know how to make better forecasts. Rather, the issue is that its too computationally expensive to run a model that solves all the shallow water physical interactions at a resolution that's sufficient to give good surf forecasts. While there are some near-shore models such as the SWAN Model, they are still somewhat experimental and computationally expensive. (https://www.whoi.edu/science/AOPE/dept/Publications/107.pdf)
+Regarding option 1: It's not that we don't know how to make better forecasts. Rather, the issue is that its too computationally expensive to run a model that solves all the shallow water physical interactions at a resolution that's sufficient to give good surf forecasts. [While there are some near-shore models](http://stream1.cmatc.cn/pub/comet/MarineMeteorologyOceans/NearshoreWaveModeling/comet/oceans/nearshore_wave_models/print.htm#page_2.1.0) such as [the SWAN Model](https://www.whoi.edu/science/AOPE/dept/Publications/107.pdf), they are still somewhat experimental and remain too computationally expensive. 
 
 Option 2 is already implemented by many forecast services. Surfline and MSW have cameras set up in the more popular surf spots which users can view online at any time (after paying a membership fee, of course). This certainly improves the problem of giving an accurate surf report (although it does nothing to improve forecasts), but comes with its own suite of issues including angry locals who want to keep their spot secret (more on this later), and the fact that maintening the necessary ifnrastructure for hundreds of cameras along the coast is expensive. 
 
@@ -64,11 +65,11 @@ And what if it were? What if Jeff Bezos was an avid surfer and paid 100 forecast
 
 # Problem #3: Forecasting Services Need to Better Consider Surf Culture
 
-There are a lot of ways one could describe surf culture, but in my opinion there are three characteristics which are shared by almost all surfers:
+There are a lot of ways one could describe surf culture, but in my opinion there are three characteristics which are shared by almost all surfers:  
 
-1) **They value exploration and discovery.** It's considered poor etiquette to tell the whole world about certain high quality surf spots. Rather, it's up to each surfer to discover such spots on their own by putting in the time and effort to gain the appropriate experience and knowledge.
-2) **They're protective of their local surf breaks.** This topic could be a blog post on its own. For better or worse, surfers don't like when their favorite spot is swarmed by lots of new surfers that don't know or respect the rules of the break.
-3) **They care about protecting the Earth's oceans.** This one isn't even a problem, but it's something we need to keep in mind. Surfers recognize that the oceans are the source of their favourite hobby, and as such, they desperately want to keep them clean and safe.
+1. **They value exploration and discovery.** It's considered poor etiquette to tell the whole world about certain high quality surf spots. Rather, it's up to each surfer to discover such spots on their own by putting in the time and effort to gain the appropriate experience and knowledge.
+2. **They're protective of their local surf breaks.** This topic could be a blog post on its own. For better or worse, surfers don't like when their favorite spot is swarmed by lots of new surfers that don't know or respect the rules of the break.
+3. **They care about protecting the Earth's oceans.** This one isn't even a problem, but it's something we need to keep in mind. Surfers recognize that the oceans are the source of their favourite hobby, and as such, they desperately want to keep them clean and safe.
 
 The current business model of surf forecasting flies contrary to these three core values. For example, a map showing all 100+ surf breaks in San Diego, each with its own rating and detailed report, blasted out to the whole world is in my opinion, the antithesis of surf culture.
 
@@ -91,9 +92,7 @@ It's important to understand that each individual user of SurfSense will have th
 
 The final question is if this will actually lead to better forecasts. The key here will be in the specifics of the machine learning model used in SurfSense. Domain knowledge of surf forecasting methods and understanding of machine learning is crucial to developing an optimal approach. For example, it's generally accepted that machine learning models require massive training datasets numbering tens to hundreds of thousands of instances in order to be accurate. This is less than ideal if each individual user's training dataset consists of each surf event. As much as they'd prefer, it's simply not possible for surfers to surf hundreds of thousands of times. But using some knowledge of the physical interactions of the ocean along with an understanding of the various machine learning approaches, it's actually possible to create a useful model that does not require massive amounts of training data. Rather, it may be possible that a reasonable model could be trained after only one season of surfing (which is certainly shorter than how long it takes to even learn how to surf). 
 
-In the coming months I'll continue building the SurfSense user interface and begin testing the underlying data-driven forecast model. Stay tuned. 
+For now, SurfSense is still in development. As of this writing, I've built an API that collects buoy observations, WW3 predictions, and relevant atmospheric conditions. It also allows you to save your surf session ratings and will compare those conditions to buoy and model data. In the coming months I'll be working to include the machine learning prototype and begin testing. If you'd like to track my progress or simply take a peak at the UI, [you can try out SurfSense for free by clicking here.](surfsense.herokuapp.com)
 
-
-{: .mx-auto.d-block :}
 
 
