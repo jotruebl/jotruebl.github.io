@@ -8,7 +8,7 @@ tags:
 - Modeling
 ---
 
-I'd like to share with you what I believe are the three biggest problems with the various surf forecast/report services that are currently available, and why I think machine learning is well suited to address these problems. Ultimately, it's my view that **a surf forecasting service driven by machine learning has the potential toto provide more affordable, accurate forecasts to users in a way that better aligns with the values of surf culture.** 
+I'd like to share with you what I believe are the three biggest problems with the various surf forecast/report services that are currently available, and why I think machine learning is well suited to address these problems. Ultimately, it's my view that **a surf forecasting service driven by machine learning has the potential to provide more affordable, accurate forecasts to users in a way that better aligns with the values of surf culture.** 
 
 Without wasting any time, let's dive in and start with the first and most obvious problem. Please note that for the sake of brevity, when I say 'surf forecast' I'm talking about both 'surf forecasts', which are made in advance, and 'surf reports', which describe the current conditions.
 
