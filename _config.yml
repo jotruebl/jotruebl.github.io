@@ -114,9 +114,9 @@ author:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url:  "https://github.com/jotruebl"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      # url: "https://instagram.com/"
+    - label: "Google Scholar"
+      icon: "fa-graduation-cap fa-w-20"
+      url: "https://scholar.google.com/citations?user=1J7xaCEAAAAJ&hl=en"
 
 # Site Footer
 footer:
