@@ -22,6 +22,8 @@ Cochran, R. E.;  Laskina, O.;  **Trueblood, J. V.**;  Estillore, A. D.;  Morris,
 
 Estillore, A. D.;  **Trueblood, J. V.**; Grassian, V. H., Atmospheric chemistry of bioaerosols: heterogeneous and multiphase reactions with atmospheric oxidants and other trace gases. *Chemical Science* **2016**, *7* (11), 6604-6616.
 
+Chen, T.-H.;  Wang, L.; **Trueblood, J. V.**;  Grassian, V. H.; Cohen, S. M., Poly(isophthalic acid)(ethylene oxide) as a Macromolecular Modulator for Metal–Organic Polyhedra. *Journal of the American Chemical Society* **2016**, *138* (30), 9646-9654.
+
 **Trueblood, J. V.**;  Estillore, A. D.;  Lee, C.;  Dowling, J. A.;  Prather, K. A.; Grassian, V. H., Heterogeneous Chemistry of Lipopolysaccharides with Gas-Phase Nitric Acid: Reactive Sites and Reaction Pathways. *The Journal of Physical Chemistry A* **2016**, *120* (32), 6444-6450.
 
 Wang, X.;  Sultana, C. M.;  **Trueblood, J.**;  Hill, T. C. J.;  Malfatti, F.;  Lee, C.;  Laskina, O.;  Moore, K. A.;  Beall, C. M.;  McCluskey, C. S.;  Cornwell, G. C.;  Zhou, Y.;  Cox, J. L.;  Pendergraft, M. A.;  Santander, M. V.;  Bertram, T. H.;  Cappa, C. D.;  Azam, F.;  DeMott, P. J.;  Grassian, V. H.; Prather, K. A., Microbial Control of Sea Spray Aerosol Composition: A Tale of Two Blooms. *ACS Central Science* **2015**, *1* (3), 124-131.
@@ -29,4 +31,5 @@ Wang, X.;  Sultana, C. M.;  **Trueblood, J.**;  Hill, T. C. J.;  Malfatti, F.;  
 Ault, A. P.;  Guasco, T. L.;  Baltrusaitis, J.;  Ryder, O. S.;  **Trueblood, J. V.**;  Collins, D. B.;  Ruppel, M. J.;  Cuadra-Rodriguez, L. A.;  Prather, K. A.; Grassian, V. H., Heterogeneous Reactivity of Nitric Acid with Nascent Sea Spray Aerosol: Large Differences Observed between and within Individual Particles. *The Journal of Physical Chemistry Letters* **2014**, *5* (15), 2493-2500.
 
 Allen, D. R.;  Douglass, A. R.;  Manney, G. L.;  Strahan, S. E.;  Krosschell, J. C.;  **Trueblood, J. V.**;  Nielsen, J. E.;  Pawson, S.; Zhu, Z., Modeling the Frozen-In Anticyclone in the 2005 Arctic Summer Stratosphere. *Atmos. Chem. Phys.* **2011**, *11* (9), 4557-4576.
+
 
