@@ -3,7 +3,6 @@ permalink: /about/
 title: "About Me"
 classes: wide
 ---
-# Hey
 
 ## Publications
 
@@ -15,7 +14,7 @@ Freney, E.;  Sellegri, K.;  Nicosia, A.;  **Trueblood, J. V.**;  Bloss, M.;  Rin
 
 **Trueblood, J. V.**;  Alves, M. R.;  Power, D.;  Santander, M. V.;  Cochran, R. E.;  Prather, K. A.; Grassian, V. H., Shedding Light on Photosensitized Reactions within Marine-Relevant Organic Thin Films. *ACS Earth and Space Chemistry* **2019**, *3* (8), 1614-1623.
 
-DeMott, P. J.;  Mason, R. H.;  McCluskey, C. S.;  Hill, T. C. J.;  Perkins, R. J.;  Desyaterik, Y.;  Bertram, A. K.;  **Trueblood, Jonathan V.**;  Grassian, V. H.;  Qiu, Y.;  Molinero, V.;  Tobo, Y.;  Sultana, C. M.;  Lee, C.; Prather, K. A., Ice nucleation by particles containing long-chain fatty acids of relevance to freezing by sea spray aerosols.* Environmental Science: Processes & Impacts* **2018**, *20* (11), 1559-1569.
+DeMott, P. J.;  Mason, R. H.;  McCluskey, C. S.;  Hill, T. C. J.;  Perkins, R. J.;  Desyaterik, Y.;  Bertram, A. K.;  **Trueblood, Jonathan V.**;  Grassian, V. H.;  Qiu, Y.;  Molinero, V.;  Tobo, Y.;  Sultana, C. M.;  Lee, C.; Prather, K. A., Ice nucleation by particles containing long-chain fatty acids of relevance to freezing by sea spray aerosols. *Environmental Science: Processes & Impacts* **2018**, *20* (11), 1559-1569.
 
 McCluskey, C. S.;  Hill, T. C. J.;  Sultana, C. M.;  Laksina, O.;  **Trueblood, J. V.**;  Santander, M. V.;  Beall, C. M.;  Michaud, J. M.;  Kreidenweis, S. M.;  Prather, K. A.;  Grassian, V. H.; DeMott, P. J., A Mesocosm Double Feature: Insights into the Chemical Makeup of Marine Ice Nucleating Particles. *J. Atmos. Sci.* **2018**, *75*, 2405-2423.
 
@@ -32,5 +31,33 @@ Wang, X.;  Sultana, C. M.;  **Trueblood, J.**;  Hill, T. C. J.;  Malfatti, F.;  
 Ault, A. P.;  Guasco, T. L.;  Baltrusaitis, J.;  Ryder, O. S.;  **Trueblood, J. V.**;  Collins, D. B.;  Ruppel, M. J.;  Cuadra-Rodriguez, L. A.;  Prather, K. A.; Grassian, V. H., Heterogeneous Reactivity of Nitric Acid with Nascent Sea Spray Aerosol: Large Differences Observed between and within Individual Particles. *The Journal of Physical Chemistry Letters* **2014**, *5* (15), 2493-2500.
 
 Allen, D. R.;  Douglass, A. R.;  Manney, G. L.;  Strahan, S. E.;  Krosschell, J. C.;  **Trueblood, J. V.**;  Nielsen, J. E.;  Pawson, S.; Zhu, Z., Modeling the Frozen-In Anticyclone in the 2005 Arctic Summer Stratosphere. *Atmos. Chem. Phys.* **2011**, *11* (9), 4557-4576.
+
+## Talks and Presentations
+
+## Experience/Education
+
+*2018 - current*
+**Postdoc**, Centre National de la Recherche Scientifique
+*Supervisor:* Dr. Karine Sellegri
+*Topic:* Modeling ocean biological production of atmospheric ice nucleating particles
+
+*2013 - 2018*
+**PhD in Atmospheric and Physical Chemistry**, UC San Diego
+[Center for Aerosol Impacts on Chemistry of the Environment](https://caice.ucsd.edu/)
+*Supervisor:* Prof. Vicki H. Grassian
+*Topic:* Spectroscopic investigations into nascent and aged sea spray aerosol
+
+*2011 - 2013*
+**MS in Atmospheric Science**, North Carolina State University
+*Supervisor:* Prof. Nicholas Meskhidze
+*Topic:* Formation mechanisms of volatile organic compounds over remote marine regions
+
+*Jun - August 2010*
+**Undergraduate Research Assistant in Machine Learning**, University of Oklahoma
+*Supervisor:* Prof. Amy McGovern
+*Topic:* Predicting convectively induced turbulence using spatiotemporal random relational forests
+
+*2007 - 2011*
+**BA in Physics**, Dordt University
 
 
