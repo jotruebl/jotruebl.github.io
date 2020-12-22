@@ -65,5 +65,3 @@ Allen, D. R.;  Douglass, A. R.;  Manney, G. L.;  Strahan, S. E.;  Krosschell, J.
 
 *2007 - 2011*  
 **BA in Physics**, Dordt University  
-
-
