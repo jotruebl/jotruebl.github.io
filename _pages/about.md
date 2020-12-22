@@ -37,27 +37,45 @@ Allen, D. R.;  Douglass, A. R.;  Manney, G. L.;  Strahan, S. E.;  Krosschell, J.
 ## Experience/Education
 
 *2018 - current*
+
 **Postdoc**, Centre National de la Recherche Scientifique
+
 *Supervisor:* Dr. Karine Sellegri
+
 *Topic:* Modeling ocean biological production of atmospheric ice nucleating particles
 
+
 *2013 - 2018*
+
 **PhD in Atmospheric and Physical Chemistry**, UC San Diego
+
 [Center for Aerosol Impacts on Chemistry of the Environment](https://caice.ucsd.edu/)
+
 *Supervisor:* Prof. Vicki H. Grassian
+
 *Topic:* Spectroscopic investigations into nascent and aged sea spray aerosol
 
+
 *2011 - 2013*
+
 **MS in Atmospheric Science**, North Carolina State University
+
 *Supervisor:* Prof. Nicholas Meskhidze
+
 *Topic:* Formation mechanisms of volatile organic compounds over remote marine regions
 
+
 *Jun - August 2010*
+
 **Undergraduate Research Assistant in Machine Learning**, University of Oklahoma
+
 *Supervisor:* Prof. Amy McGovern
+
 *Topic:* Predicting convectively induced turbulence using spatiotemporal random relational forests
 
+
 *2007 - 2011*
+
 **BA in Physics**, Dordt University
 
 
