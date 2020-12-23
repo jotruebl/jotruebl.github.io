@@ -16,7 +16,7 @@ Freney, E.;  Sellegri, K.;  Nicosia, A.;  **Trueblood, J. V.**;  Bloss, M.;  Rin
 
 **Trueblood, J. V.**;  Alves, M. R.;  Power, D.;  Santander, M. V.;  Cochran, R. E.;  Prather, K. A.; Grassian, V. H., Shedding Light on Photosensitized Reactions within Marine-Relevant Organic Thin Films. *ACS Earth and Space Chemistry* **2019**, *3* (8), 1614-1623.
 
-DeMott, P. J.;  Mason, R. H.;  McCluskey, C. S.;  Hill, T. C. J.;  Perkins, R. J.;  Desyaterik, Y.;  Bertram, A. K.;  **Trueblood, Jonathan V.**;  Grassian, V. H.;  Qiu, Y.;  Molinero, V.;  Tobo, Y.;  Sultana, C. M.;  Lee, C.; Prather, K. A., Ice nucleation by particles containing long-chain fatty acids of relevance to freezing by sea spray aerosols. *Environmental Science: Processes & Impacts* **2018**, *20* (11), 1559-1569.
+DeMott, P. J.;  Mason, R. H.;  McCluskey, C. S.;  Hill, T. C. J.;  Perkins, R. J.;  Desyaterik, Y.;  Bertram, A. K.;  **Trueblood, J. V.**;  Grassian, V. H.;  Qiu, Y.;  Molinero, V.;  Tobo, Y.;  Sultana, C. M.;  Lee, C.; Prather, K. A., Ice nucleation by particles containing long-chain fatty acids of relevance to freezing by sea spray aerosols. *Environmental Science: Processes & Impacts* **2018**, *20* (11), 1559-1569.
 
 McCluskey, C. S.;  Hill, T. C. J.;  Sultana, C. M.;  Laksina, O.;  **Trueblood, J. V.**;  Santander, M. V.;  Beall, C. M.;  Michaud, J. M.;  Kreidenweis, S. M.;  Prather, K. A.;  Grassian, V. H.; DeMott, P. J., A Mesocosm Double Feature: Insights into the Chemical Makeup of Marine Ice Nucleating Particles. *J. Atmos. Sci.* **2018**, *75*, 2405-2423.
 
@@ -57,7 +57,7 @@ Allen, D. R.;  Douglass, A. R.;  Manney, G. L.;  Strahan, S. E.;  Krosschell, J.
 *Topic:* Formation mechanisms of volatile organic compounds over remote marine regions  
 
 
-*Jun - August 2010*  
+*June - August 2010*  
 **Undergraduate Research Assistant in Machine Learning**, University of Oklahoma  
 *Supervisor:* Prof. Amy McGovern  
 *Topic:* Predicting convectively induced turbulence using spatiotemporal random relational forests  
