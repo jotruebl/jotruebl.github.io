@@ -1,73 +1,124 @@
-Research scientists will be the first to admit: we usually write code with the intent of getting the immediate task at hand done rather than having clean, reusable packages that adhere to best practices. There's a variety of reasons, or excuses, for this. The most common is that each project and it's asociated goals and data are rarely constant from one day to the next. That being said, there are plenty of instances in which taking the extra day or two to write good code can save you plenty of time in the long run. I've recently become more aware of opportunities to write re-usable code. In this post, I'll share an example of a design pattern called the factory method, which can be used to improve the reusability of your code.
+A nice overview of other pagtterns: https://stackabuse.com/creational-design-patterns-in-python/
 
-Design patterns became popular after GoF's book 'Design Patterns: Elements of Reusable Object-Oriented Software. They're basically a set of solutions to common programming problems. Creational design patterns are on category of patterns, and are related to the creation of objects. If you're a research scientists that writes exclusively in Python, you probably don't have much familiarity with these terms. That's because design patterns were developed back when less dynamic languages like C was the most popular language. Python is extremely flexible in the way it can be used, meaning most design patterns aren't even necessary, and may even be 'anti-patterns.' That being said, there are definitely instances where design patterns are extremely useful in Python code. 
+READ: https://medium.com/@mrfksiv/python-design-patterns-03-the-factory-86cb351c68b0
 
-The factory method is one design pattern which creates objects with a shared interface. It creates concrete implementations of a common interface. It separates the creation of an object from code that depends on the interface of the object. Factory method is used when we know what we want to build, but we don't want to do it directly. We want to abstract it out so that rather than manually calling the specific class, we can use a factory that does it for us. This means that it's easier for new users as they're all pointed to a single method or class, and its also easier to modularize the code for future cases. See here for an explanation: https://www.giacomodebidda.com/factory-method-and-abstract-factory-in-python/
+Research scientists will be the first to admit: we tend to write code with the intent of getting the immediate task at hand done rather than having clean, reusable packages that adhere to best practices. There's a variety of reasons, or excuses, for this. The most common is that the goals and dataset of each individual project are rarely constant. Furthermore there's a tendency to believe, whether true or not, that the only person that will be using the code in the future is you. This often leads to us cursing our past-selves for wtriting such unintelligible code. But the fact is, when revisions are due tomorrow, the priority rests on just getting it to work.
+
+I've recently made an effort to be more vigilant about taking opportunities to write re-usable code. This meant reviewing the various design patterns in programming. Design patterns are basically a set of solutions to common programming problems, and became popular after the so-called Gang of Four's book 'Design Patterns: Elements of Reusable Object-Oriented Software' which came out in the '90s. Creational design patterns are a specific category of design patterns related to the creation of objects. 
+
+If you're someone that writes exclusively in Python, you probably don't have much familiarity with these terms. That's because design patterns were developed back when less dynamic languages were more popular. Python is extremely flexible in the way it can be used, meaning most design patterns aren't even necessary, and may even be 'anti-patterns.' That being said, there are definitely instances where design patterns are extremely useful in Python code. In this post, I'll share an example of a design pattern called the factory method, which can be used to improve the reusability of your code.
+
+The factory method helps simplify the process of object creation. It does so by using various methods to handle the logic of which concrete implementation of a common interface to create. 
+
+ Someone else explains it well in their post:
 
 'In Factory Method the client knows what she wants, but for some reason she can’t create the object directly. The reasons vary case-by-case: maybe she wants to use a common interface instead of manually instantiating the class she requires, or maybe she would need to pass a huge set of parameters to the constructor. Most of the time the client wants a single object, and this pattern relieves her of the responsability of creating this object directly.'
 
-I'll describe a recent project in which the factory method proved useful for me. I recently took part in a research voyage into the Southern Ocean. My goal was to study the properties of ice nucleating particles (INP). INP are tiny particles that help water freeze into ice. Some INP are better at this job than others, and my goal was to study the various properties of INP. To do this, I had to collect samples from a number of locations. Since each sample was collected from a different location, the resulting raw data needed to be processed differently before it was ready for analysis. Here's an example of the various types of INP data:
+It separates the creation of an object from code that depends on the interface of the object. Factory method is used when we know what we want to build, but we don't want to do it directly. We want to abstract it out so that rather than manually calling the specific class, we can use a factory that does it for us. This means that it's easier for new users as they're all pointed to a single method or class, and its also easier to modularize the code for future cases. See here for an explanation: https://www.giacomodebidda.com/factory-method-and-abstract-factory-in-python/
 
-seawater
-bubbler
-ambient
-coriolis
+################
+################
+Let's look at an example. I'll describe a recent project in which the factory method proved useful for me. I recently took part in a research voyage into the Southern Ocean where my goal was to study the properties of ice nucleating particles (INP). I'll skip the details, but put simply: INP are tiny particles that help water freeze into ice. Some INP are better at this job than others, and my goal was to study the various properties of INP. To do this, I had to collect samples from a number of different locations on the ship, which I've named as follows:
 
-We can think of a class called INP which is defined by the following interface: it takes in raw data and metadata, and then processes that data and outputs a cleaned data file ready for analysis. As mentioned above, each data type requires different analysis process. 
+- seawater
+- bubbler
+- ambient
+- coriolis
 
-We can imagine buuilding the function like this:
+Since each sample was collected from a different location, the resulting raw data needed to be processed differently before it was ready for analysis. 
+
+Let's build up from the beginning what some code might look like. We can imagine a class called raw_data that each of these types of data inherit from. They all have a similar interface, meaning they all need to do similar things, but in different ways. In the case of INP raw data objects, we take raw data, metadata, preprocess it and then output a cleaned file. But the actual concrete implementation is different depending on the type of experimental dataset we're working with. So one for seawater, bubbler, coriolis, etc.
+
+
+We can imagine buuilding the class raw_data like this, with a clean_raw_data function:
 
 ```python
-class raw_data:
+class RawData:
+    
+    # assign properties to the object based on params passed
     def init(raw_data, params):
-        # assign properties to the object based on params passed
         pass
-    def clean_raw_data:
-        # a bunch of if/else statements that determine which chunk of code to enact
+
+    # a bunch of if/else statements that determine which chunk of code to enact
+    def clean_raw_data(self):
+        if self.type_ == seawater:
+            if self.location == surface_water:
+                pass
+            elif self.location == subsurface_water
+                pass
+        elif self.type_ == aerosol:
+            if self.location == ambient:
+                pass
+            elif self.location == coriolis:
+                pass
+            elif self.location == bubbler:
+                pass
+```
+
+Depending on the type of data passed into the function, we will have a different logical pathway. The problem with this approach shoudl be clear. We're using a bunch of if/else statements to guide the flow of our logic. What happens when we have INP data of a new type? We have to go in and add a new branch of if/else statements without messing up the existing code. What happens if someone else wants to use this code? It's not very readable. We'll have these if/else statements all floating around our complex pre-processing code. 
+
+And what if the different types of raw data objects have differnt parameters? We'd need to handle all of this in one single class. 
+
+When a new INP type is ontroduced, well have to add a bunch of new if/else statements. When the parameters and metadata for that new type changes, we have to add this to the class.
+
+This is where the factory method helps. We basically abstract out the if/elif/else conditional statements into a separate 'factory' classs. The application delegates the decision of which concrete implementation of an interface to apply to a separate component. Our first step in building a factory method is to look for a common interface.
+
+**Important point:**
+    The first step when you see complex conditional code in an application is to identify the common goal of each of the execution paths (or logical paths).
+
+In the case of INP objects, our common goal is to take raw data, metadata, and save a cleaned file.
+
+Then, we'll create a concrete implementation for each type and an application that delegates which of these components to use when creating the object. This is the essence of the factory method.
+
+It turns out, unsurprisingly, there's a bunch of ways to go about this. I'll give two examples.  The first way is to put each concrete implementation in the raw_data class and create a factory method which decides which implementation within the class to call. This can lead to an unwieldy chunk of code in the RawData2 class, as we'll see. Another way is to build a class consisting of the necessary components using a factory method design pattern.
+
+Let's look at the first approach. We will define class RawData with a calculate_raw method, which takes in some metadata. We'll also use **kwargs to simplify the parameter passing step. 
+
+```python
+class RawData:
+    def __init__(self, type_, location, **kwargs)
+        self.type_ = type_
+        self.location = location
+        self.__dict__.update(kwargs)
+    
+    # Define the client method
+    def calculate_raw(self):
+        calculator = self._get_calculator()
+        return calculator()
+    
+    # Define creator method. Leading underscores denote these methods should not be directly called by the user.
+    def _get_calculator(self):
+        if self.type_ == 'seawater':
+            return self._calculate_seawater
+        elif self.type_ == 'aerosol':
+            if self.location == 'bubbler':
+                return self._calculate_bubbler
+        else:
+            raise ValueError(self.type_, self.location)
+    
+    # Define concrete products
+    def _calculate_seawater(self):
+        pass
+    def _calculate_bubbler(self):
         pass
 ```
 
-Depending on the type of data passed into the function, we will have a different logical pathway. The problem with this approach shoudl be clear. We're using a bunch of if/else statements to guide the flow of our logic. What happens when we have INP data of a new type? We have to go in and add a new branch of if/else statements, without messing up the existing code. What happens if someone else wants to use this code? It's not very readable.
+Now we would run this by doing the following:
 
-This is where the factory method helps. Instead of using if/elif/else conditional statements to determine concrete implementation of objects, factory method allows for a separate component to handle it. The application delegates the decision of which concrete implementation of an interface to apply to a separate component.
+```python
+>>> d = RawData('aerosol', 'bubbler', other parameters..)
+>>> d.calculate_raw()
+```
 
-The first step when you see complex conditional code in an application is to identify the common goal of each of the execution paths (or logical paths).
-
-Code that uses if/elif/else usually has a common goal that is implemented in different ways in each logical path.
-
-In the case of INP objects, we take raw data, metadata, and save a cleaned file. This is the interface. But the actual concrete implementation is different depending on the type of experimental dataset we're working with. So one for seawater, bubbler, coriolis, etc.
-
-Therefore, we'll create a concrete implementation for each type, and an application that delegates which of these components to use when creating the object.
-
-At first glance, we could just create a method that takes parameters and uses if/else statements to decide how to handle this data. But that leads to the following code: *show calculate_raw() function in pyce tools*
-
-The problem with this is obvious. It's difficult to update and not very friendly to new coders. So we could take it a step further...So imagine we have a class INP that consists of some metadata and raw data.
-We also have a class that takes the INP obbject and, depending on the specifics of that object, will 'calculate raw' as guided by a bunch of if/else statements.
-
-See the following section for why this code is still sub-optimal:
-https://realpython.com/factory-method-python/#the-problems-with-complex-conditional-code
-
-So now we use factory method. The goal is to provide a separate component which automatically decides which concrete implementation to use. 
-
-There's actually a few ways to go about this. One of them is to put each concrete implementation in the class and create a factory method which decides which implementation within the class to call. This can lead to an unwieldy chunk of code in the RawData2 class. This approach comes from realpython's blog post.
-
-Another way is to use composition. We will build a class consisting of the necessary components using a factory method design pattern.
-
-This means we create a class for each type of data, which si then returned depending on the logic of tthe factory. This is the approach as described [here](https://stackabuse.com/the-factory-method-design-pattern-in-python/)
-
-A ncie overview of other pagtterns: https://stackabuse.com/creational-design-patterns-in-python/
-
-
-Basic Implementation of Factory Method
-A separate component has the responsibility of deciding which conrete implementation shoudl be used. Note that the method does not CALL the implementatino, but rather simply returns the function object itself. This is possible thanks to first order methods/classes of Python. (I think).
+What happens here is A separate component has the responsibility of deciding which conrete implementation shoudl be used. Note that the method does not CALL the implementatino, but rather simply returns the function object itself. This is possible thanks to first order methods/classes of Python. (I think).
 
 So now the class will
-1) serialize() method, which takes in a song and a format and define a serializer by calling the get_serializer method. This is called the client portion. The serializer is returned by get_serializer as an uncalled method, which is not called until the final return.
-2) get_serializer method takes in a format and determines the correct concrete implementation and returns it as an object (not called!). This is the creator component.
-3) concrete serialize method, these are called the concrete products. The product is the interface, which is not explicitly defined in Python.
+1) calculate_raw() method, which define a calculator by calling the _get_calculator method. This is called the client portion. The calculator is returned by _get_calculator as an uncalled method. Note that the calculator which is returned is not actually called until the final return.
+2) _get_calculator method takes in a format and determines the correct concrete implementation and returns it as an object (not called!). This is the creator component.
+3) concrete calculator method, these are called the concrete products. The product is the interface, which is not explicitly defined in Python.
 
 
-The mechanics of Factory Method are always the same. A client (SongSerializer.serialize()) depends on a concrete implementation of an interface. It requests the implementation from a creator component (get_serializer()) using some sort of identifier (format).
+The mechanics of Factory Method are always the same. A client (RawData.calculate_raw()) depends on a concrete implementation of an interface. It requests the implementation from a creator component (_get_calculator()) using some sort of identifier, which in this case are the properties of the object.
 
 The creator returns the concrete implementation according to the value of the parameter to the client, and the client uses the provided object to complete its task.
 
@@ -77,7 +128,109 @@ Replacing complex logical code: Complex logical structures in the format if/elif
 
 Factory Method is a good replacement because you can put the body of each logical path into separate functions or classes with a common interface, and the creator can provide the concrete implementation.
 
-The parameter evaluated in the conditions becomes the parameter to identify the concrete implementation. The example above represents this situation.
+Now if we have a new raw data type, we can simply add an elif statement to our creator method, and create a new concrete product method for its implementation: 
+
+```python
+class RawData:
+    def __init__(self, type_, location, **kwargs)
+        self.type_ = type_
+        self.location = location
+        self.__dict__.update(kwargs)
+    
+    # Define the client method
+    def calculate_raw(self):
+        calculator = self._get_calculator()
+        return calculator()
+    
+    # Define creator method. Leading underscores denote these methods should not be directly called by the user.
+    def _get_calculator(self):
+        if self.type_ == 'seawater':
+            return self._calculate_seawater
+        elif self.type_ == 'aerosol':
+            if self.location == 'bubbler':
+                return self._calculate_bubbler
+            if self.location == 'coriolis':
+                return self._calculate_coriolis
+        else:
+            raise ValueError(self.type_, self.location)
+    
+    # Define concrete products
+    def _calculate_seawater(self):
+        pass
+    def _calculate_bubbler(self):
+        pass
+    def _coriolis(self):
+        pass
+```
+
+The second approach to this is to use composition (https://stackabuse.com/the-factory-method-design-pattern-in-python/). So here we make a separate class for each data type. First we create a superclass that defines the interface for all subclasses.
+
+```python
+# we can define a parent class of rawINP which forces all subsequent subclasses to have a'calculate raw' method
+class RawINP(ABC):
+    @abstractmethod
+    def calculate_raw(self):
+        pass
+```
+
+Then we can define each of the subclasses:
+
+```python
+# create a different class for each data type/location
+# we can make an INP class that this inherits from, then all processes can be done with one object
+# see the inp class in pyce_tools.py file
+class Bubbler:
+    def __init__(self, metadata_dictionary):
+        # actually should do this explicitly so that if the attr is not passed in the dictionary, it will give an explicit error upon instantiation
+        self.__dict__.update(metadata_dictionary)
+    
+    # this will be_calculate_seawater() from below
+    def calculate_raw(self):
+        pass
+
+class Seawater:
+    def __init__(self, params):
+        # explicitly update attributes
+    def calculate_raw(self):
+        pass
+
+class Coriolis:
+    def __init__(self, params):
+        # explicitly update attributes
+    def calculate_raw(self):
+        pass
+```
+
+Finally, we create a function that accepts raw data and returns the correct class for us by calling the datafactory.
+
+```python
+class DataFactory:
+    def create_raw(self, metadata_dictionary):
+        if metadata_dictionary[type_] == 'bubbler':
+            return Bubbler(metadata_dictionary)
+        elif...
+            pass
+
+def raw_data_creator(metadata_dictionary):
+    data_factory = DataFactory()
+    data_object = data_factory.create_raw(metadata_dictionary)
+    return data_object
+```
+
+In this way, we simply pass in our metadata dictionary to the raw_data_creator function, which uses the factory method to automatically create the correct class. We then simply call the calculate_raw() method on our returned object.
+
+```python
+>>> inp = raw_data_creator(params)
+>>> inp.calculate_raw()
+Raw data calculated!
+```
+
+
+This is a more modular approach, and may prove to be simpler for future users.
+
+
+
+
 
 Constructing related objects from external data: Imagine an application that needs to retrieve employee information from a database or other external source.
 
@@ -99,5 +252,3 @@ Rather than keeping these implementations in the original class, we will create 
 Our RawData class should be abstract interface that has methods for defining raw metadata and then calculating. Each type of INP data should have its own concrete implementation depending on the type and location.
 
 Recall above that the creator was a function called 'get_serializer'. Here, we use the client to retrieve the calculator from the object factory. So we need an ObjectFactory. An ObjectFactory is just a class of a creator.
-
-https://realpython.com/factory-method-python/#a-general-purpose-object-factory
