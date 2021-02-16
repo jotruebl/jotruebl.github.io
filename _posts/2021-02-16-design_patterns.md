@@ -186,7 +186,7 @@ class RawData:
             if self.location == 'underway':
                 return self._calculate_underway
             elif self.location == 'microlayer':
-                return self._ccalculate_microlayer
+                return self._calculate_microlayer
         elif self.type_ == 'aerosol':
             if self.location == 'bubbler':
                 return self._calculate_bubbler
