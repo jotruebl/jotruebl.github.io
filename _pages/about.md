@@ -36,6 +36,7 @@ Allen, D. R.;  Douglass, A. R.;  Manney, G. L.;  Strahan, S. E.;  Krosschell, J.
 
 ## Talks and Presentations
 
+
 ## Experience/Education
 
 *2018 - current*  
@@ -62,6 +63,63 @@ Allen, D. R.;  Douglass, A. R.;  Manney, G. L.;  Strahan, S. E.;  Krosschell, J.
 *Supervisor:* Prof. Amy McGovern  
 *Topic:* Predicting convectively induced turbulence using spatiotemporal random relational forests  
 
+*June - August 2008 and 2009*
+**Undergraduate Research Assistant in Atmospheric Science**, Dordt University
+*Supervisor:* Prof. Doug Allen
+*Topic:* Analysis and modeling of the stratosphere above the polar arctic region
 
 *2007 - 2011*  
 **BA in Physics**, Dordt University  
+
+## Community Service and Leadership Positions
+
+
+**Instructor**, Clubes de Ciencia, Monterrey, Mexico, August 2018
+*Developed and taught a week-long course on sea sprsay aerosols, climate, and ocean biogeochemistry to high school students in Mexico.*
+
+
+
+**Student Leadership Comittee**, [Center for Aerosol Impacts on Chemistry of the Environment](https://caice.ucsd.edu/), UC San Diego, 2016 - 2018
+*Maintained interface between CAICE students and PI's through bi-weekly meetings. Planned and led weekly student meetings.*
+
+
+
+**Department of Chemistry Open House Presenter**, University of Iowa, September 2015
+*Planned and held demonstrations during UIowa Department of Chemistry open houses.*
+
+
+
+**Presenter**, [California State Summer School for Mathematics and Science (COSMOS)](https://jacobsschool.ucsd.edu/cosmos/), UC San Diego, September 2015
+*Planned and taught laboratory experiment sessions with students geared towards the radiatived properties of atmospheric green house gases.*
+
+
+
+**Presenter**, [Iowa Climate Festival](https://www.icgov.org/ic-climate-fest), University of Iowa, April 2014 and April 2015
+*Planned and conducted demonstrations for the community to raise awareness of climate science at the annual Iowa Climate Festival.*
+ 
+
+## Awards
+
+*2017*
+Runner-up UCSD GRADSlam Competition 
+
+
+*2016 - 2017*
+San Diego Fellowship 
+
+
+*2015*
+Center for Global and Regional Environmental Research Graduate Student Travel Award
+
+
+*2011*
+Honorable Mention Presentation at 91st American Meteorological Society Annual Meeting
+
+*2007 - 2011*
+Dordt University Presidnetial Scholarship
+
+*2007 - 2011*
+Dordt University Concert Band Scholarship
+
+*2007 - 2011*
+Dordt University Cross Country/Track Scholarship
