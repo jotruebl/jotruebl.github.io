@@ -298,6 +298,7 @@ The benefit to this approach is that each type of INP data has its own class. If
 In the end, the approach you take is up to you. But hopefully it's clear why spending an extra 5-10 minutes to think about your code will save you time in the long run.
 
 **More reading:**
+
 [Python Design Patterns](https://python-patterns.guide/) - Brandon Rhodes
 
 [Creational Design Patterns in Python](https://stackabuse.com/creational-design-patterns-in-python/) - Darinka Zobenica
