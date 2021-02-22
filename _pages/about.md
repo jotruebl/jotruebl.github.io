@@ -34,8 +34,6 @@ Ault, A. P.;  Guasco, T. L.;  Baltrusaitis, J.;  Ryder, O. S.;  **Trueblood, J. 
 
 Allen, D. R.;  Douglass, A. R.;  Manney, G. L.;  Strahan, S. E.;  Krosschell, J. C.;  **Trueblood, J. V.**;  Nielsen, J. E.;  Pawson, S.; Zhu, Z., Modeling the Frozen-In Anticyclone in the 2005 Arctic Summer Stratosphere. *Atmos. Chem. Phys.* **2011**, *11* (9), 4557-4576.
 
-## Talks and Presentations
-
 
 ## Experience/Education
 
@@ -63,23 +61,22 @@ Allen, D. R.;  Douglass, A. R.;  Manney, G. L.;  Strahan, S. E.;  Krosschell, J.
 *Supervisor:* Prof. Amy McGovern  
 *Topic:* Predicting convectively induced turbulence using spatiotemporal random relational forests  
 
-*June - August 2008 and 2009*
-**Undergraduate Research Assistant in Atmospheric Science**, Dordt University
+*June - August 2008 and 2009*  
+**Undergraduate Research Assistant in Atmospheric Science**, Dordt University  
 *Supervisor:* Prof. Doug Allen  
 *Topic:* Analysis and modeling of the stratosphere above the polar arctic region
 
 *2007 - 2011*  
 **BA in Physics**, Dordt University  
 
-## Community Service and Leadership Positions
-
+## Community Service and Leadership Positions  
 
 **Instructor**, Clubes de Ciencia, Monterrey, Mexico, August 2018  
 *Developed and taught a week-long course on sea sprsay aerosols, climate, and ocean biogeochemistry to high school students in Mexico.*
 
 
 
-**Student Leadership Comittee**, [Center for Aerosol Impacts on Chemistry of the Environment](https://caice.ucsd.edu/), UC San Diego, 2016 - 2018  
+**Student Leadership Committee**, [Center for Aerosol Impacts on Chemistry of the Environment](https://caice.ucsd.edu/), UC San Diego, 2016 - 2018  
 *Maintained interface between CAICE students and PI's through bi-weekly meetings. Planned and led weekly student meetings.*
 
 
