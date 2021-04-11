@@ -8,9 +8,9 @@ Hi I'm Jon. I like science and surfing. I also have a dog named Peaches.
 
 ## Publications
 
-**Trueblood, J. V.**;  Nicosia, A.;  Engel, A.;  Zäncker, B.;  Rinaldi, M.;  Freney, E.;  Thyssen, M.;  Obernosterer, I.;  Dinasquet, J.;  Belosi, F.;  Tovar-Sánchez, A.;  Rodriguez-Romero, A.;  Santachiara, G.;  Guieu, C.; Sellegri, K., A Two-Component Parameterization of Marine Ice Nucleating Particles Based on Seawater Biology and Sea Spray Aerosol Measurements in the Mediterranean Sea. *Atmos. Chem. Phys. Discuss.* **in review, 2020**.
+**Trueblood, J. V.**;  Nicosia, A.;  Engel, A.;  Zäncker, B.;  Rinaldi, M.;  Freney, E.;  Thyssen, M.;  Obernosterer, I.;  Dinasquet, J.;  Belosi, F.;  Tovar-Sánchez, A.;  Rodriguez-Romero, A.;  Santachiara, G.;  Guieu, C.; Sellegri, K., A Two-Component Parameterization of Marine Ice Nucleating Particles Based on Seawater Biology and Sea Spray Aerosol Measurements in the Mediterranean Sea. *Atmos. Chem. Phys.* **2021**, *21*, 4659–4676.
 
-Freney, E.;  Sellegri, K.;  Nicosia, A.;  **Trueblood, J. V.**;  Bloss, M.;  Rinaldi, M.;  Prevot, A.;  Slowik, J. G.;  Thyssen, M.;  Gregori, G.;  Engel, A.;  Zancker, B.;  Desboeufs, K.;  Asmi, E.;  Lefevre, D.; Guieu, C., High Time Resolution of Organic Content and Biological Origin of Mediterranean Sea Spray Aerosol. *Atmos. Chem. Phys. Discuss.* **in review, 2020**.
+Freney, E.;  Sellegri, K.;  Nicosia, A.;  **Trueblood, J. V.**;  Bloss, M.;  Rinaldi, M.;  Prevot, A.;  Slowik, J. G.;  Thyssen, M.;  Gregori, G.;  Engel, A.;  Zancker, B.;  Desboeufs, K.;  Asmi, E.;  Lefevre, D.; Guieu, C., Mediterranean Nascent Sea Spray Organic Aerosol and Relationships with Seawater Biogeochemistry. *Atmos. Chem. Phys. Discuss.* **Manuscript Accepted, 2021**.
 
 **Trueblood, J. V.**;  Wang, X.;  Or, V. W.;  Alves, M. R.;  Santander, M. V.;  Prather, K. A.; Grassian, V. H., The Old and the New: Aging of Sea Spray Aerosol and Formation of Secondary Marine Aerosol through OH Oxidation Reactions. *ACS Earth and Space Chemistry* **2019**, *3* (10), 2307-2314.
 
@@ -37,7 +37,7 @@ Allen, D. R.;  Douglass, A. R.;  Manney, G. L.;  Strahan, S. E.;  Krosschell, J.
 
 ## Experience/Education
 
-*2018 - current*  
+*2019 - 2021*  
 **Postdoc**, Centre National de la Recherche Scientifique  
 *Supervisor:* Dr. Karine Sellegri  
 *Topic:* Modeling ocean biological production of atmospheric ice nucleating particles  
