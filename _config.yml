@@ -95,8 +95,8 @@ analytics:
 author:
   name             : "Jonathan Trueblood"
   avatar           : "/assets/img/avatar.JPG" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "Postdoctoral Researcher, Atmospheric Science"
-  location         : "Wellington, New Zealand"
+  bio              : "Environmental Information Specialist, Hatfield Consultants"
+  location         : "Vancouver, British Columbia, Canada"
   # email            : #"jvtrueblood88@gmail.com"
   links:
     - label: "Email"
