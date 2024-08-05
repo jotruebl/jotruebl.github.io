@@ -5,7 +5,7 @@ classes: wide
 ---
 
 Hi, I'm Jon and I like computers, science, and surfing. I enjoy working at the
-intersection of software development intersecting and scientific research, and
+intersection of software development and scientific research, and
 have a keen interest in backend systems design, cloud-native DevOps, and AI
 integration. I also have a dog named Peaches. 
 
